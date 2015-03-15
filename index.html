@@ -25,8 +25,9 @@ function summonerId() {
   xhr2.open("GET", "https://na.api.pvp.net/api/lol/na/v2.2/matchhistory/" + id + "?api_key=***", false);
   xhr2.send();
   var json2 = JSON.parse(xhr2.responseText);
-  var jsonStr = JSON.stringify(json2);
-  document.getElementById("test").innerHTML = jsonStr;
+  var win = json2.matches[0].participants[0].stats.winner;
+  //var jsonStr = JSON.stringify(json2);
+  document.getElementById("test").innerHTML = win;
   return false;
 }
 </script>
