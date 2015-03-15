@@ -7,10 +7,10 @@ function summonerId() {
   //var str1 = "https://na.api.pvp.net/api/lol/na/v1.4/summoner/by-name/";
   var str2 = document.getElementById("summonerName").value;
   //alert(typeof(str2));
-  //var str3 = "?api_key=20190fb1-47f3-4d18-a8c4-cf768cabba44";
+  //var str3 = "?api_key=***";
   //var str4 = str1.concat(str2,str3);
   //alert(str4);
-  var inputstring = "https://na.api.pvp.net/api/lol/na/v1.4/summoner/by-name/"+ str2 +"?api_key=20190fb1-47f3-4d18-a8c4-cf768cabba44"
+  var inputstring = "https://na.api.pvp.net/api/lol/na/v1.4/summoner/by-name/"+ str2 +"?api_key=***"
   //alert (typeof(inputstring));
   var xhr = new XMLHttpRequest();
   xhr.open("GET", inputstring, false);
@@ -19,10 +19,10 @@ function summonerId() {
   //alert(json.keys());
   var id = json[str2].id;
   alert("Summoner ID is: " + id);
-  //alert("https://na.api.pvp.net/api/lol/na/v1.4/summoner/by-name/" + document.getElementById("summonerName").value + "?api_key=20190fb1-47f3-4d18-a8c4-cf768cabba44");
+  //alert("https://na.api.pvp.net/api/lol/na/v1.4/summoner/by-name/" + document.getElementById("summonerName").value + "?api_key=***");
   
   var xhr2 = new XMLHttpRequest();
-  xhr2.open("GET", "https://na.api.pvp.net/api/lol/na/v2.2/matchhistory/" + id + "?api_key=20190fb1-47f3-4d18-a8c4-cf768cabba44", false);
+  xhr2.open("GET", "https://na.api.pvp.net/api/lol/na/v2.2/matchhistory/" + id + "?api_key=***", false);
   xhr2.send();
   var json2 = JSON.parse(xhr2.responseText);
   var jsonStr = JSON.stringify(json2);
