@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+<head>
+
+<script>
+function summonerId() {
+  //var str1 = "https://na.api.pvp.net/api/lol/na/v1.4/summoner/by-name/";
+  var str2 = document.getElementById("summonerName").value;
+  //alert(typeof(str2));
+  //var str3 = "?api_key=20190fb1-47f3-4d18-a8c4-cf768cabba44";
+  //var str4 = str1.concat(str2,str3);
+  //alert(str4);
+  var inputstring = "https://na.api.pvp.net/api/lol/na/v1.4/summoner/by-name/"+ str2 +"?api_key=20190fb1-47f3-4d18-a8c4-cf768cabba44"
+  //alert (typeof(inputstring));
+  var xhr = new XMLHttpRequest();
+  xhr.open("GET", inputstring, false);
+  xhr.send();
+  var json = JSON.parse(xhr.responseText);
+  //alert(json.keys());
+  var id = json[str2].id;
+  alert("Summoner ID is: " + id);
+  //alert("https://na.api.pvp.net/api/lol/na/v1.4/summoner/by-name/" + document.getElementById("summonerName").value + "?api_key=20190fb1-47f3-4d18-a8c4-cf768cabba44");
+  
+  var xhr2 = new XMLHttpRequest();
+  xhr2.open("GET", "https://na.api.pvp.net/api/lol/na/v2.2/matchhistory/" + id + "?api_key=20190fb1-47f3-4d18-a8c4-cf768cabba44", false);
+  xhr2.send();
+  var json2 = JSON.parse(xhr2.responseText);
+  var jsonStr = JSON.stringify(json2);
+  document.getElementById("test").innerHTML = jsonStr;
+  return false;
+}
+</script>
+</head>
+
+<form onSubmit="return summonerId('summonerName');">
+Summoner Name:
+<input type="text" size="30" id="summonerName">
+<input type="submit" value="Submit"> 
+</form>
+<body>
+<p id="test"></p>
+</body>
+
+</html>
